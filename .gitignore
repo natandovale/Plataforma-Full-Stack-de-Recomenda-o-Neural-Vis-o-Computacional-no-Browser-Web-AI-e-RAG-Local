@@ -1,0 +1,29 @@
+# Dependencies & Build
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+
+# Logs & OS
+*.log
+npm-debug.log*
+.DS_Store
+
+# Testing & Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Local AI Models Cache & Docker Volumes
+.cache/
+models/
+.ollama/
+neo4j_data/
+

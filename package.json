@@ -1,0 +1,27 @@
+{
+  "name": "hybrid-ai-platform-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plataforma Full-Stack de Recomendação Neural, Visão Computacional no Browser (Web AI) e RAG Local com Neo4j",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "type": "module",
+  "workspaces": [
+    "packages/shared",
+    "packages/backend",
+    "packages/frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  }
+}
+
