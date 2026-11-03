@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@platform/shared": "*"
+    "@platform/shared": "*",
+    "@tensorflow/tfjs": "^4.22.0"
   }
 }
-

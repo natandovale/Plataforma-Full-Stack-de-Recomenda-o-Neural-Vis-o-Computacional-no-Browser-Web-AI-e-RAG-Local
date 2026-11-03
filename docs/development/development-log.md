@@ -6,6 +6,25 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Motor Neural tf.sequential, Perfil tf.stack e Web Worker de Recomendação (Incremento 3.1)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 18:59
+
+**Descrição:**
+Implementados e validados via TDD no pacote `@platform/frontend`:
+- `computeUserProfileTensorStack`: cálculo do tensor de perfil do utilizador via `tf.stack` e `tf.mean` sobre os produtos comprados (ou fallback de idade normalizada em cold start).
+- `createSequentialRecommendationModel` e `trainAndRankRecommendations`: rede neural `tf.sequential` com camadas densas `128 (relu) -> 64 (relu) -> 32 (relu) -> 1 (sigmoid)`, otimizador `adam(0.01)` e loss `binaryCrossentropy`, emitindo telemetria de `loss` e `accuracy` por época e descartando tensores com `tf.tidy` / `dispose()`.
+- `recommendation.worker.ts`: Web Worker dedicado para treinamento em segundo plano sem bloquear a UI.
+
+**Módulos afetados:**
+- `packages/frontend/src/modules/recommendation/services/neural-recommendation-engine.ts`
+- `packages/frontend/src/workers/recommendation.worker.ts`
+- `tests/unit/frontend-neural-recommendation.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Servidor HTTP Fastify, Catálogo Inicial e Endpoints RAG/WebAI Fallback (Incremento 2.3)
 
 **Categoria:** Feature (TDD)

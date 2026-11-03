@@ -4,7 +4,7 @@
 
 - **Status:** DEVELOPMENT
 - **Last Update:** 2026-11-03
-- **Current Milestone:** Milestone 3 — Motor de Recomendação Neural em Tempo Real (`@platform/frontend`)
+- **Current Milestone:** Milestone 4 — Agente Visual YOLO & Vitrine Pixi.js/Vídeo (`@platform/frontend`)
 
 ## Completed
 
@@ -17,17 +17,17 @@
 - [x] Incremento 2.1: Configuração validada do Backend (Zod), Chunking Semântico com metadados (`title`, `section`, `videoMinute`) e Repositório Vetorial Neo4j (`CREATE VECTOR INDEX` + busca por cosseno).
 - [x] Incremento 2.2: Geração Local de Embeddings (`@huggingface/transformers`), Orquestrador `LLMRouter` (`Ollama -> OpenRouter`) e `RagService` completo.
 - [x] Incremento 2.3: Servidor HTTP Fastify com endpoints validados (`/api/health`, `/api/catalog`, `/api/rag/ingest`, `/api/rag/query`, `/api/webai/fallback`).
+- [x] Incremento 3.1: Motor Neural `tf.sequential` (`128 -> 64 -> 32 -> 1`, `adam(0.01)`, `binaryCrossentropy`, perfil via `tf.stack` + fallback cold start) e Web Worker `recommendation.worker.ts`.
 
 ## In Progress
 
-- [ ] Incremento 3.1: Motor Neural `tf.sequential` (`128 -> 64 -> 32 -> 1`, `adam(0.01)`, `binaryCrossentropy`, perfil via `tf.stack` + fallback cold start) e Web Worker `recommendation.worker.ts` (aguardando alinhamento).
+- [ ] Incremento 4.1: Pré-processamento TensorFlow.js do Agente Visual YOLO (`tf.tidy`: `fromPixels -> resizeBilinear([640, 640]) -> div(255) -> expandDims`), inferência assíncrona (`executeAsync`), filtro $\ge 40\%$, cálculo de `centerX` e Web Worker `yolo.worker.ts` (aguardando alinhamento).
 
 ## Pending
 
-- [ ] Incremento 3.2: Painel de Recomendação no React integrado ao `tfvis` exibindo curvas de `loss` e `accuracy` em tempo real.
-- [ ] Incremento 4.1 & 4.2: Web Worker YOLO (`createImageBitmap` + `tf.tidy`) e palco Pixi.js/Vídeo com ação por `centerX`.
-- [ ] Incremento 5.1 & 5.2: Assistente Multimodal Web 4.0 (Cadeia de Fallback + CNPJ/Cenas/Tradução) e Fluxo Integrado E2E.
+- [ ] Incremento 5.1: Cadeia de Adaptadores do Assistente Multimodal Web 4.0 (`1. Gemini Nano -> 2. Transformer.js Worker -> 3. Ollama -> 4. OpenRouter`) com suporte a texto, áudio, imagem/CNPJ e tradução `PT <-> EN`.
+- [ ] Incremento 5.2 (e 3.2/4.2): Aplicação Unificada React + Vite + `tfvis` + Palco Pixi.js/Vídeo (`createImageBitmap`) + Chat RAG 10 Blocos e Testes E2E Playwright.
 
 ## Next Steps
 
-1. Alinhar e executar o Incremento 3.1 (Rede Neural `tf.sequential` com TensorFlow.js, `tf.stack` e `recommendation.worker.ts`) via TDD.
+1. Alinhar e executar o Incremento 4.1 (Pipeline TensorFlow.js do Agente Visual YOLO com `tf.tidy` $640 \times 640$, `executeAsync` e `yolo.worker.ts`) via TDD.
