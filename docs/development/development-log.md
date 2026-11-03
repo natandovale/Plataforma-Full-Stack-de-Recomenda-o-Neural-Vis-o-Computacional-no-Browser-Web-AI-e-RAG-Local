@@ -6,6 +6,26 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Configuração Zod, Chunking Semântico e Repositório Vetorial Neo4j (Incremento 2.1)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 18:31
+
+**Descrição:**
+Implementados e testados via TDD no pacote `@platform/backend`:
+- `parseBackendEnv`: validação das variáveis de ambiente com Zod e defaults para Ollama CPU (`qwen2.5:1.5b`, `moondream`), Neo4j e Transformer.js (`Xenova/all-MiniLM-L6-v2`).
+- `chunkDocumentSemantically`: divisão de documentos/transcrições em chunks semânticos preservando `title`, `section` e `videoMinute`.
+- `Neo4jVectorRepository` e `InMemoryVectorRepository`: criação de índice vetorial no Neo4j (`rag_chunk_vector_idx` com `384` dimensões e função `cosine`), persistência de grafos `(:Document)-[:HAS_CHUNK]->(:Chunk)` e busca semântica ordenada por score.
+
+**Módulos afetados:**
+- `packages/backend/src/config/env.ts`
+- `packages/backend/src/modules/rag/services/semantic-chunker.ts`
+- `packages/backend/src/modules/rag/adapters/neo4j-vector-repository.ts`
+- `tests/unit/backend-rag-chunking-and-repo.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Serializadores JSON Tabular / TOON e Motor de Prompt de 10 Blocos Anti-Alucinação (Incremento 1.2)
 
 **Categoria:** Feature (TDD)

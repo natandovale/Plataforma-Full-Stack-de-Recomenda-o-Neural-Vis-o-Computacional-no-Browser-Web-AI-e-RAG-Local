@@ -7,7 +7,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@platform/shared": "*"
+    "@platform/shared": "*",
+    "neo4j-driver": "^5.27.0",
+    "zod": "^3.24.1"
   }
 }
-
