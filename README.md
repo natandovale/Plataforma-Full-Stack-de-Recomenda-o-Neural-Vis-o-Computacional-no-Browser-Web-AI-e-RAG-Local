@@ -7,6 +7,35 @@ Plataforma integrada em **Node.js 22+ e TypeScript** que une quatro pilares de I
 3. **Assistente Web 4.0 Multimodal:** Processamento de texto, áudio e imagens (extração estruturada de cartão CNPJ, descrição de cenas) e tradução (`PT <-> EN`) com cadeia de resiliência: `Chrome Built-in AI (Gemini Nano) -> Transformer.js (Browser Worker) -> Ollama (Docker CPU) -> OpenRouter`.
 4. **Pipeline RAG Local com Neo4j e Prompts JSON/TOON:** Chunking semântico de PDFs e transcrições, embeddings locais via `@huggingface/transformers`, indexação vetorial no Neo4j (`título`, `secção`, `minuto do vídeo`), prompt com os **10 blocos anti-alucinação** serializado em **JSON Tabular** ou **TOON** e roteamento `Ollama -> OpenRouter`.
 
+---
+
+## Como Executar o Projeto
+
+### 1. Instalar dependências e rodar testes + typecheck
+```bash
+npm install
+npm test
+npm run typecheck
+npm run build
+```
+
+### 2. Subir Infraestrutura Docker (Neo4j Vector Index + Ollama CPU com Auto-Pull)
+```bash
+docker compose -f infrastructure/docker-compose.yml up -d
+```
+> O container `platform-ollama-cpu` inicia em modo CPU e baixa automaticamente os modelos leves configurados (`qwen2.5:1.5b` para texto/RAG e `moondream` para visão).
+
+### 3. Iniciar Backend (Fastify) e Frontend (React + Vite)
+```bash
+# Terminal 1 — Backend Fastify (http://localhost:3001)
+npm run dev --workspace=@platform/backend
+
+# Terminal 2 — Frontend Vite (http://localhost:5173)
+npm run dev --workspace=@platform/frontend
+```
+
+---
+
 ## Documentação e Governança
 
 - [AGENTS.md](file:///home/user/%C3%81rea%20de%20trabalho/temp/Projetos/Plataforma-Full-Stack-de-Recomenda-o-Neural-Vis-o-Computacional-no-Browser-Web-AI-e-RAG-Local/AGENTS.md) — Governança central e diretrizes de AI Pair Programming (XP + TDD).
@@ -16,4 +45,3 @@ Plataforma integrada em **Node.js 22+ e TypeScript** que une quatro pilares de I
 - [Plano de Desenvolvimento](file:///home/user/%C3%81rea%20de%20trabalho/temp/Projetos/Plataforma-Full-Stack-de-Recomenda-o-Neural-Vis-o-Computacional-no-Browser-Web-AI-e-RAG-Local/docs/development/development-plan.md)
 - [Progresso do Projeto](file:///home/user/%C3%81rea%20de%20trabalho/temp/Projetos/Plataforma-Full-Stack-de-Recomenda-o-Neural-Vis-o-Computacional-no-Browser-Web-AI-e-RAG-Local/docs/development/progress.md)
 - [Diário de Bordo (Development Log)](file:///home/user/%C3%81rea%20de%20trabalho/temp/Projetos/Plataforma-Full-Stack-de-Recomenda-o-Neural-Vis-o-Computacional-no-Browser-Web-AI-e-RAG-Local/docs/development/development-log.md)
-
