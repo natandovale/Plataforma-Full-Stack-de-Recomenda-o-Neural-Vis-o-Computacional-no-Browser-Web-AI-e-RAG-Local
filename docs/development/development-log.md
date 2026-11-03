@@ -6,6 +6,25 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Pipeline TensorFlow.js do Agente Visual YOLO e Web Worker (Incremento 4.1)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 19:04
+
+**Descrição:**
+Implementados e validados via TDD no pacote `@platform/frontend`:
+- `preprocessPixelTensorForYolo` e `preprocessImageSourceForYolo`: pré-processamento dentro de `tf.tidy` aplicando `fromPixels` -> `resizeBilinear([640, 640])` -> `div(255)` -> `expandDims(0)` com verificação estrita de zero vazamento de tensores (`tf.memory().numTensors`).
+- `runYoloInferenceAndBuildAction`: inferência assíncrona via `executeAsync`, filtragem de caixas com `classThreshold >= 0.40`, cálculo de $\text{centerX} = x_1 + (x_2 - x_1)/2$ e emissão da ação automatizada `MOVE_AGENT_AND_INSPECT`.
+- `yolo.worker.ts`: Web Worker com controle de concorrência de frames, recebimento de `ImageBitmap` transferível e liberação de memória (`bitmap.close()`).
+
+**Módulos afetados:**
+- `packages/frontend/src/modules/visual-agent/services/yolo-inference-engine.ts`
+- `packages/frontend/src/workers/yolo.worker.ts`
+- `tests/unit/frontend-yolo-engine.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Motor Neural tf.sequential, Perfil tf.stack e Web Worker de Recomendação (Incremento 3.1)
 
 **Categoria:** Feature (TDD)
