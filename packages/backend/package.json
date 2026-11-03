@@ -4,11 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "node --import tsx/esm src/server.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fastify/cors": "^10.0.1",
     "@huggingface/transformers": "^3.3.3",
     "@platform/shared": "*",
+    "fastify": "^5.2.0",
     "neo4j-driver": "^5.27.0",
     "zod": "^3.24.1"
   }

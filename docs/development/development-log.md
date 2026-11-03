@@ -6,6 +6,25 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Servidor HTTP Fastify, Catálogo Inicial e Endpoints RAG/WebAI Fallback (Incremento 2.3)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 18:51
+
+**Descrição:**
+Implementados e validados via testes de integração no pacote `@platform/backend`:
+- `catalog-data.ts`: catálogo inicial de produtos com categorias, cores, preços, idade média dos compradores, labels YOLO, perfis de utilizadores (com histórico e cold start) e documentos de conhecimento para o RAG.
+- `createBackendApp` (`app.ts`) e `server.ts`: rotas HTTP Fastify com CORS e validação Zod para `/api/health`, `/api/catalog`, `/api/rag/ingest`, `/api/rag/query` e `/api/webai/fallback` (incluindo extração estruturada de cartão CNPJ).
+
+**Módulos afetados:**
+- `packages/backend/src/modules/catalog/catalog-data.ts`
+- `packages/backend/src/app.ts`
+- `packages/backend/src/server.ts`
+- `tests/integration/backend-fastify-api.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Geração Local de Embeddings, Orquestrador LLMRouter e RagService (Incremento 2.2)
 
 **Categoria:** Feature (TDD)
