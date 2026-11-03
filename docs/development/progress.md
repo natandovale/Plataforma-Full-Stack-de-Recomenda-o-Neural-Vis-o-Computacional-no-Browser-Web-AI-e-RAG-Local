@@ -2,7 +2,7 @@
 
 ## Current Status
 
-- **Status:** DEVELOPMENT (Bootstrap Completed)
+- **Status:** DEVELOPMENT
 - **Last Update:** 2026-11-03
 - **Current Milestone:** Milestone 1 — Fundação, Domínio Matemático e Serializadores (`@platform/shared`)
 
@@ -12,14 +12,14 @@
 - [x] Alinhamento arquitetural e definição da stack (Fastify + React/Vite + Neo4j + Ollama CPU + Fallbacks).
 - [x] Governança técnica (`AGENTS.md`) e documentação complementar inicial.
 - [x] Bootstrap do Monorepo (`packages/shared`, `packages/backend`, `packages/frontend`, `infrastructure/`).
+- [x] Incremento 1.1: Engenharia de Features (`normalizeMinMax`, `oneHotWeighted`, perfil/cold start) e cálculo de `centerX` / threshold YOLO (`>= 0.40`).
 
 ## In Progress
 
-- [ ] Incremento 1.1: Engenharia de Features (`normalizeMinMax`, `oneHotWeighted`, perfil/cold start) e cálculo de `centerX` / threshold YOLO (aguardando aprovação da proposta do Primeiro Incremento).
+- [ ] Incremento 1.2: Serializadores `JSON Tabular` e `TOON` + Validador do Prompt de 10 Blocos Anti-Alucinação (aguardando alinhamento).
 
 ## Pending
 
-- [ ] Incremento 1.2: Serializadores `JSON Tabular` e `TOON` + Validador do Prompt de 10 Blocos Anti-Alucinação.
 - [ ] Incremento 2.1: Infraestrutura Docker (Neo4j + Ollama CPU) e servidor base Fastify.
 - [ ] Incremento 2.2: Ingestão PDF/Transcrições, Embeddings locais (`@huggingface/transformers`) e Neo4j Vector Index.
 - [ ] Incremento 2.3: LLM Router (`Ollama -> OpenRouter`) e API RAG.
@@ -29,5 +29,4 @@
 
 ## Next Steps
 
-1. Aprovar a proposta do Primeiro Incremento (Incremento 1.1) na Etapa 6.
-2. Instalar dependências base de teste (`vitest`, `typescript`, `zod`) e iniciar o ciclo TDD (Red -> Green -> Refactor).
+1. Alinhar e executar o Incremento 1.2 (Serializadores `JSON Tabular` e `TOON` + Construtor/Validador do Prompt de 10 Blocos Anti-Alucinação) via TDD.

@@ -6,6 +6,27 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Implementação do Domínio Matemático de Engenharia de Features e Geometria YOLO (Incremento 1.1)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 18:19
+
+**Descrição:**
+Implementadas e testadas via TDD (Red -> Green -> Refactor) as regras matemáticas de domínio no pacote `@platform/shared`:
+- `normalizeMinMax`: normalização contínua de idade e preço em $[0, 1]$ com proteção para $\max = \min$.
+- `oneHotWeighted` e `buildProductFeatureVector`: codificação categórica ponderada respeitando a hierarquia `categoria (0.40) > cor (0.25) > preço (0.20) > idade média (0.15)`.
+- `computeUserProfileVector`: cálculo do perfil pela média empilhada dos produtos comprados e fallback cold start baseado na idade normalizada.
+- `calculateBoundingBoxCenterX` e `filterAndComputeDetections`: filtro de confiança $\ge 0.40$ e cálculo de $\text{centerX} = x_1 + (x_2 - x_1)/2$.
+
+**Módulos afetados:**
+- `packages/shared/src/domain/feature-engineering.ts`
+- `packages/shared/src/domain/yolo-geometry.ts`
+- `packages/shared/src/index.ts`
+- `tests/unit/domain-math.spec.ts`
+
+---
+
 ### [LOW] [INFRA] Bootstrap estrutural do Monorepo e Infraestrutura Docker CPU
 
 **Categoria:** Infrastructure & Bootstrap
