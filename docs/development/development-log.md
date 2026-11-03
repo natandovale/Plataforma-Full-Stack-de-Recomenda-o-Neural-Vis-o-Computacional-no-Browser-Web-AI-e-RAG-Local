@@ -6,6 +6,25 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Serializadores JSON Tabular / TOON e Motor de Prompt de 10 Blocos Anti-Alucinação (Incremento 1.2)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 18:24
+
+**Descrição:**
+Implementados e validados via TDD no pacote `@platform/shared`:
+- `serializeChunksToJsonTabular` e `serializeChunksToToon`: serialização econômica de chunks do Neo4j com metadados obrigatórios (`id`, `title`, `section`, `videoMinute`, `score`, `text`) e sanitização de delimitadores.
+- `buildTenBlockRagPrompt`, `validateTenBlockPromptWithZod`, `validateTenBlockPromptWithAjv` e `renderTenBlockPromptToText`: construção e validação dupla (Zod + Ajv JSON Schema) exigindo os 10 blocos anti-alucinação (`contexto`, `tom`, `fonteDaVerdade`, `contratoOperacional`, `exemplos`, `historico`, `pedido`, `raciocinio`, `formato`, `restricoes`).
+
+**Módulos afetados:**
+- `packages/shared/src/serializers/source-of-truth-serializer.ts`
+- `packages/shared/src/schemas/rag-prompt-schema.ts`
+- `packages/shared/src/index.ts`
+- `tests/unit/rag-prompt-and-serializers.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Implementação do Domínio Matemático de Engenharia de Features e Geometria YOLO (Incremento 1.1)
 
 **Categoria:** Feature (TDD)
