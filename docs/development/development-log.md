@@ -6,6 +6,25 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Cadeia de Fallback do Assistente Multimodal Web 4.0 (Incremento 5.1)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 19:09
+
+**Descrição:**
+Implementados e validados via TDD no pacote `@platform/frontend`:
+- `GeminiNanoWindowAiProvider`: integração nativa com `window.ai` / `languageModel.create({ temperature, topK })`, streaming via `promptStreaming` e API de tradução nativa.
+- `TransformersJsBrowserProvider` e `webai-transformers.worker.ts`: execução local/offline no browser para extração estruturada de Cartão CNPJ, descrição de cenas e tradução `PT <-> EN`.
+- `BackendBridgeWebAiProvider` e `WebAIMultimodalChain`: orquestração na ordem estrita `1. Gemini Nano -> 2. Transformer.js -> 3. Ollama CPU -> 4. OpenRouter`, registrando todos os motivos de fallback em `fallbackErrors`.
+
+**Módulos afetados:**
+- `packages/frontend/src/modules/web-ai/services/web-ai-chain.ts`
+- `packages/frontend/src/workers/webai-transformers.worker.ts`
+- `tests/unit/frontend-webai-fallback-chain.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Pipeline TensorFlow.js do Agente Visual YOLO e Web Worker (Incremento 4.1)
 
 **Categoria:** Feature (TDD)
