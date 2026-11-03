@@ -6,6 +6,26 @@
 
 ## 2026-11-03
 
+### [MEDIUM] [FEATURE] Geração Local de Embeddings, Orquestrador LLMRouter e RagService (Incremento 2.2)
+
+**Categoria:** Feature (TDD)
+**Importância:** Média
+**Horário:** 18:45
+
+**Descrição:**
+Implementados e validados via TDD no pacote `@platform/backend`:
+- `TransformersJsLocalEmbedder` e `DeterministicHashEmbedder`: geração local de embeddings de `384` dimensões usando `@huggingface/transformers` (`Xenova/all-MiniLM-L6-v2` com `pooling: 'mean'` e `normalize: true`).
+- `LLMRouter`, `OllamaAdapter` e `OpenRouterAdapter`: orquestração com cadeia de fallback (`Ollama CPU -> OpenRouter`) preservando os motivos de falha do provedor primário em `fallbackErrors`.
+- `RagService`: fluxo integrado de ingestão semântica, busca vetorial, montagem e validação dupla (Zod + Ajv) do prompt de 10 blocos anti-alucinação em `TOON` / `JSON_TABULAR` e telemetria de economia de tokens.
+
+**Módulos afetados:**
+- `packages/backend/src/modules/rag/adapters/local-embedder.ts`
+- `packages/backend/src/modules/llm-router/services/llm-router.ts`
+- `packages/backend/src/modules/rag/services/rag-service.ts`
+- `tests/unit/backend-embedder-llmrouter-and-rag.spec.ts`
+
+---
+
 ### [MEDIUM] [FEATURE] Configuração Zod, Chunking Semântico e Repositório Vetorial Neo4j (Incremento 2.1)
 
 **Categoria:** Feature (TDD)
